@@ -5,7 +5,7 @@ import App from './app';
 const Root = ({ store }) => {
 	return (
 		<div>
-            Hello
+            <App />
 		</div>
 	);
 };

@@ -1,4 +1,5 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
+import Header from './header/header.jsx'
 
 class App extends Component {
   constructor (props) {
@@ -8,7 +9,7 @@ class App extends Component {
   render() {
     return (
       <div>
-          Dokkio
+          <Header/>
       </div>
     )
   }
