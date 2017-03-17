@@ -1,5 +1,6 @@
 import DokkioLogo from './dokkio-logo.png'
 import React, { Component } from 'react'
+import './header.scss'
 
 class Header extends Component {
     constructor(props) {
@@ -8,8 +9,11 @@ class Header extends Component {
 
     render() {
         return (
-            <div>
+            <div id='header'>
                 <img src={require('./dokkio-logo.png')}/>
+                <div className='header-text'>
+                    Palindrome Highlighter
+                </div>
             </div>
         )
     }

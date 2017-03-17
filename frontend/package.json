@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack -p --env.production --env.platform=default --progress",
-    "start": "webpack-dev-server --inline"
+    "start": "webpack-dev-server --progress --inline --hot --content-base"
   },
   "author": "",
   "license": "ISC",
