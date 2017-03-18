@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
+import TextOut from '../text-output/text-output.jsx'
 
 class TextInput extends Component {
     constructor(props) {
         super(props)
         this.state = {
             body: [],
+            textOutput: false
         }
         this.flagPalindromes = this.flagPalindromes.bind(this)
+        this.displayTextOutput = this.displayTextOutput.bind(this)
     }
 
     flagPalindromes(e) {
@@ -25,13 +28,36 @@ class TextInput extends Component {
         return str === str.split('').reverse().join('')
     }
 
+    displayTextOutput() {
+        this.setState({textOutput: true})
+    }
+
+    textOutput() {
+        if (this.state.textOutput) {
+            return (
+                <div>
+                    <TextOut body={this.state.body}/>
+                </div>
+            )
+        } else {
+            return <div></div>
+        }
+    }
+
     render() {
         return (
             <div>
                 <input onChange={this.flagPalindromes}/>
+                <button onClick={this.displayTextOutput}/>
+                {this.textOutput()}
             </div>
         )
     }
+}
+
+const style = {
+    background: 'background: yellow'
+
 }
 
 export default TextInput
