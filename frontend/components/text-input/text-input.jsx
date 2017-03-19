@@ -50,6 +50,7 @@ class TextInput extends Component {
                 <input onChange={this.flagPalindromes}/>
                 <button onClick={this.displayTextOutput}/>
                 {this.textOutput()}
+                
             </div>
         )
     }
