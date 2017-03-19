@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import TextOut from '../text-output/text-output.jsx'
 
+import { connect } from 'react-redux'
+import { sendBody } from '../text-actions'
+
+
+
 class TextInput extends Component {
     constructor(props) {
         super(props)
         this.state = {
             body: [],
-            textOutput: false
         }
         this.flagPalindromes = this.flagPalindromes.bind(this)
         this.displayTextOutput = this.displayTextOutput.bind(this)
@@ -45,6 +49,7 @@ class TextInput extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <div>
                 <input onChange={this.flagPalindromes}/>
@@ -56,9 +61,17 @@ class TextInput extends Component {
     }
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        sendBody: (body) => dispatch(sendBody(body))
+    }
+}
+
+export default connect(
+    mapDispatchToProps
+)(TextInput)
+
 const style = {
     background: 'background: yellow'
 
 }
-
-export default TextInput

@@ -4,9 +4,9 @@ import App from './app';
 
 const Root = ({ store }) => {
 	return (
-		<div>
-            <App />
-		</div>
+		<Provider store={store}>
+			<App />
+		</Provider>
 	);
 };
 
