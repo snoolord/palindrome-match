@@ -3,8 +3,14 @@ import TextOut from '../text-output/text-output.jsx'
 
 import { connect } from 'react-redux'
 import { sendBody } from '../text-actions'
+import './text-input.scss'
 
+const mapStateToProps = state => ({
 
+})
+const mapDispatchToProps = dispatch => ({
+    sendBody: (body) => dispatch(sendBody(body))
+})
 
 class TextInput extends Component {
     constructor(props) {
@@ -13,7 +19,7 @@ class TextInput extends Component {
             body: [],
         }
         this.flagPalindromes = this.flagPalindromes.bind(this)
-        this.displayTextOutput = this.displayTextOutput.bind(this)
+        this.sendBody = this.sendBody.bind(this)
     }
 
     flagPalindromes(e) {
@@ -28,50 +34,34 @@ class TextInput extends Component {
         this.setState({body: currentBody})
     }
 
+    sendBody() {
+        console.log(this.state.body)
+        this.props.sendBody(this.state.body)
+    }
+
     isPalindrome(str) {
         return str === str.split('').reverse().join('')
     }
 
-    displayTextOutput() {
-        this.setState({textOutput: true})
-    }
-
-    textOutput() {
-        if (this.state.textOutput) {
-            return (
-                <div>
-                    <TextOut body={this.state.body}/>
-                </div>
-            )
-        } else {
-            return <div></div>
-        }
-    }
-
     render() {
-        console.log(this.props)
         return (
-            <div>
+            <div className='text-input'>
                 <input onChange={this.flagPalindromes}/>
-                <button onClick={this.displayTextOutput}/>
-                {this.textOutput()}
-
+                <div
+                    className='highlight-palindromes'
+                    onClick={this.sendBody}
+                    >
+                    Highlight Palindromes
+                </div>
+                <TextOut/>
             </div>
         )
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        sendBody: (body) => dispatch(sendBody(body))
-    }
-}
+
 
 export default connect(
+    mapStateToProps,
     mapDispatchToProps
 )(TextInput)
-
-const style = {
-    background: 'background: yellow'
-
-}

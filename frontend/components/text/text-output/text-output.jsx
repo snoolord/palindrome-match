@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
 import './text-output.scss'
 
+import { connect } from 'react-redux'
+
 class TextOut extends Component {
     constructor(props) {
         super(props)
     }
     render() {
-        let body = this.props.body
-        console.log(body)
+        let body = this.props.body.body
         return (
             <div className='text-output'>
                 {body.map((word, index) => {
                     return (
-                        <div className={word.palindrome ? 'highlight output' : 'output'}>
+                        <div key={index} className={word.palindrome ? 'highlight output' : 'output'}>
                             {word.word}
                         </div>
                     )
@@ -22,5 +23,10 @@ class TextOut extends Component {
     }
 }
 
+const mapStateToProps = state => ({
+    body: state.body
+})
 
-export default TextOut
+export default connect(
+    mapStateToProps
+)(TextOut)
