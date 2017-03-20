@@ -46,12 +46,19 @@ class TextInput extends Component {
     render() {
         return (
             <div className='text-input'>
-                <input onChange={this.flagPalindromes}/>
+                <textarea
+                    placeholder='Input Paragraph Here'
+                    className='text-input-area'
+                    onChange={this.flagPalindromes}
+                    />
                 <div
-                    className='highlight-palindromes'
-                    onClick={this.sendBody}
-                    >
-                    Highlight Palindromes
+                    className='highlight-container'>
+                    <div
+                        className='highlight-palindromes bttn-unite bttn-sm'
+                        onClick={this.sendBody}
+                        >
+                        Highlight Palindromes
+                    </div>
                 </div>
                 <TextOut/>
             </div>
