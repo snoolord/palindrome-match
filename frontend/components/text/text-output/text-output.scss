@@ -1,10 +1,22 @@
 .text-output {
+    display: flex;
+    justify-content: center;
+}
+
+.words-container {
+    margin-top: 15px;
     width: 500px;
     display: flex;
     flex-wrap: wrap;
+    font-family: sans-serif;
+    padding: 16px;
+    border: none;
+    border-radius: 3px;
+    border: 2px solid #eee;
 }
-.output {
 
+.output {
+    padding: 5px 2px;
 }
 
 .highlight {

@@ -20,11 +20,12 @@ class TextInput extends Component {
         }
         this.flagPalindromes = this.flagPalindromes.bind(this)
         this.sendBody = this.sendBody.bind(this)
+        this.sendBodyClick = this.sendBodyClick.bind(this)
     }
 
     flagPalindromes(e) {
         // split up each word and find out if they're palindromes
-        let currentBody = e.currentTarget.value.split(' ')
+        let currentBody = e.currentTarget.value.trim().split(' ')
         currentBody = currentBody.map(word => {
             return {
                 word: word,
@@ -34,13 +35,21 @@ class TextInput extends Component {
         this.setState({body: currentBody})
     }
 
-    sendBody() {
-        console.log(this.state.body)
+    sendBody(e) {
+        if (e.keyCode === 13 || !e) {
+            e.preventDefault()
+            this.props.sendBody(this.state.body)
+        }
+    }
+
+    sendBodyClick() {
         this.props.sendBody(this.state.body)
     }
 
     isPalindrome(str) {
-        return str === str.split('').reverse().join('')
+     console.log(str.toLowerCase() === str.toLowerCase().split('').reverse().join(''))
+
+        return str.toLowerCase() === str.toLowerCase().split('').reverse().join('')
     }
 
     render() {
@@ -49,18 +58,18 @@ class TextInput extends Component {
                 <textarea
                     placeholder='Input Paragraph Here'
                     className='text-input-area'
+                    onKeyDown={this.sendBody}
                     onChange={this.flagPalindromes}
                     />
                 <div
                     className='highlight-container'>
                     <div
                         className='highlight-palindromes bttn-unite bttn-sm'
-                        onClick={this.sendBody}
+                        onClick={this.sendBodyClick}
                         >
                         Highlight Palindromes
                     </div>
                 </div>
-                <TextOut/>
             </div>
         )
     }
