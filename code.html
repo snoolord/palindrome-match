@@ -23,8 +23,11 @@ for (x=0;x <= states.length - 1;x++) {
             m = 1;
             state = '';
             for (x in results) {
-                console.log(x)
-                if (new Number(results[x][0]) > m) (state = results[x][1]) && (m = parseInt(results[x][0]));
+                if (new Number(results[x][0]) > m){
+                    state = results[x][1]
+                    m = parseInt(results[x][0]);
+
+                }
             }
             document.getElementById('max').innerHTML = state
         }
