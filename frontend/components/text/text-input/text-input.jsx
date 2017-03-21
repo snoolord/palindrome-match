@@ -20,6 +20,7 @@ class TextInput extends Component {
         this.state = {
             body: [],
         }
+        // bind TextInput to callback functions
         this.flagPalindromes = this.flagPalindromes.bind(this)
         this.sendBody = this.sendBody.bind(this)
         this.sendBodyClick = this.sendBodyClick.bind(this)
@@ -29,6 +30,7 @@ class TextInput extends Component {
         // split up each word and find out if they're palindromes
         let currentBody = e.currentTarget.value.trim().split(' ')
         currentBody = currentBody.map(word => {
+            // returns object with palindrome flag
             return {
                 word: word,
                 palindrome: this.isPalindrome(word)
@@ -38,6 +40,7 @@ class TextInput extends Component {
     }
 
     sendBody(e) {
+        // dispatches sendBody action on enter
         if (e.keyCode === 13 || !e) {
             e.preventDefault()
             this.props.sendBody(this.state.body)
@@ -45,12 +48,11 @@ class TextInput extends Component {
     }
 
     sendBodyClick() {
-        // dispatches sendBody action
+        // dispatches sendBody action on click
         this.props.sendBody(this.state.body)
     }
 
     isPalindrome(str) {
-
         return str.toLowerCase() === str.toLowerCase().split('').reverse().join('')
     }
 
