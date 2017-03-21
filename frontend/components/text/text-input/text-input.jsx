@@ -15,6 +15,8 @@ const mapDispatchToProps = dispatch => ({
 class TextInput extends Component {
     constructor(props) {
         super(props)
+        /* this.state.body will be an array of objects
+        that flag whether the word is a palindrome */
         this.state = {
             body: [],
         }
@@ -43,11 +45,11 @@ class TextInput extends Component {
     }
 
     sendBodyClick() {
+        // dispatches sendBody action
         this.props.sendBody(this.state.body)
     }
 
     isPalindrome(str) {
-     console.log(str.toLowerCase() === str.toLowerCase().split('').reverse().join(''))
 
         return str.toLowerCase() === str.toLowerCase().split('').reverse().join('')
     }

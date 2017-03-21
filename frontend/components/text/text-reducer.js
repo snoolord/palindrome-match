@@ -9,7 +9,6 @@ const TextReducer = function (state = _defaultState, action) {
     let newState = state
     switch (action.type) {
         case SEND_BODY:
-            console.log(action.body)
             return merge({}, _defaultState, {body: action.body})
         default:
             return state
