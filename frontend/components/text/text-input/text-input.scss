@@ -1,7 +1,5 @@
 .text-input {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    text-align: center;
     padding: 16px;
     background: rgb(253,186,20);
 }
@@ -18,10 +16,9 @@
 
 .highlight-container {
     padding: 10px;
+    margin: 0 auto;
+    width: 200px;
 }
-// .highlight-palindromes:hover {
-//     box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.75);
-// }
 
 .bttn-default {
   color: #fff;
